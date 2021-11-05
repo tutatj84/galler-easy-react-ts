@@ -14,7 +14,7 @@ const App = () => {
           <Route path='/' element={<Layout />}>
             <Route index element={<Search />} />
             <Route path='favourite' element={<Favourite />} />
-            <Route path='*' element={<Search />} />
+            <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
@@ -31,6 +31,17 @@ const Layout = () => {
       </nav>
 
       <Outlet />
+    </div>
+  )
+}
+
+const NotFound = () => {
+  return (
+    <div className="not-found">
+      <h2>Page Not Found!</h2>
+      <p>
+        <Link to='/'>Back to HomePage</Link>
+      </p>
     </div>
   )
 }
