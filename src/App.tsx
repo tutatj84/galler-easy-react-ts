@@ -1,10 +1,13 @@
 // react
-import React from 'react';
+import React from 'react'
 // lib
-import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom'
+import styled from 'styled-components'
+import Header from './components/Header'
 // components
-import Favourite from './screens/Favourite';
-import Search from './screens/Search';
+import Favourite from './screens/Favourite'
+import NotFound from './screens/NotFound'
+import Search from './screens/Search'
 
 const App = () => {
   return (
@@ -19,31 +22,18 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
 const Layout = () => {
   return (
-    <div className="layout">
-      <nav>
-        <Link to='/' >Home</Link>
-        <Link to='/favourite' >Favourite</Link>
-      </nav>
-
+    <>
+      <Header />
       <Outlet />
-    </div>
+    </>
   )
 }
 
-const NotFound = () => {
-  return (
-    <div className="not-found">
-      <h2>Page Not Found!</h2>
-      <p>
-        <Link to='/'>Back to HomePage</Link>
-      </p>
-    </div>
-  )
-}
-
-export default App;
+export default styled(App) `
+  
+`
