@@ -6,6 +6,12 @@ import * as Constants from '../Constant'
 interface SearchProps {
 	className?: string
 }
+interface ImageInfo {
+	images: {
+		fixed_height:
+		{ url: string }
+	}
+}
 
 const startSearching = async (keyword: string, limit: number, offset: number) => {
 	const searchUrl = `${Constants.BASE_URL}?\
@@ -20,19 +26,20 @@ const startSearching = async (keyword: string, limit: number, offset: number) =>
 }
 
 const Search: FunctionComponent<SearchProps> = (props) => {
-	const [txtSearch, setTxtSearch] = useState('')
-
 	const { className } = props
 
-	// config for search
-	const limitSearch = 8
-	const offsetSearch = 0
+	const [txtSearch, setTxtSearch] = useState('')
+	const [offset, setOffset] = useState(0)
+	const [imageUrls, setImageUrls] = useState([''])
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		const data = await startSearching(txtSearch, limitSearch, offsetSearch)
-		console.log(data)
-		
+		const searchResponse = await startSearching(txtSearch, Constants.SEARCH_LIMIT, offset)
+		const imageInfos = searchResponse.data
+		const imageAPIUrls: string[] = imageInfos.map((imageInfo: ImageInfo) => imageInfo.images.fixed_height.url)
+		console.log(imageAPIUrls);
+
+		setImageUrls(imageAPIUrls)
 	}
 
 	return (
@@ -44,11 +51,11 @@ const Search: FunctionComponent<SearchProps> = (props) => {
 					value={txtSearch}
 					onChange={(e) => setTxtSearch(e.target.value)} />
 			</form>
-			<ImagesContainer />
+			<ImagesContainer imageUrls={imageUrls} />
 		</div>
 	);
 }
 
-export default styled(Search) `
-	
+export default styled(Search)`
+	padding: 2rem
 `

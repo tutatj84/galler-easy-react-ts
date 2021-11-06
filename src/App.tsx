@@ -1,7 +1,7 @@
 // react
 import React from 'react'
 // lib
-import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from './components/Header'
 // components
