@@ -13,10 +13,6 @@ interface ImageInfo {
 	}
 }
 
-interface ImageBoxProps {
-	imageUrl: string
-}
-
 const startSearching = async (keyword: string, limit: number, offset: number) => {
 	const searchUrl = `${Constants.BASE_URL}?\
 											api_key=${Constants.API_KEY}\
@@ -48,9 +44,8 @@ const Search: FunctionComponent<SearchProps> = (props) => {
 	}, [offset])
 
 	const handleSubmit = async (e: React.FormEvent) => {
-		console.log('Submittt');
-		
 		e.preventDefault()
+		setImageUrls([])
 		if (txtSearch) {
 			setOffset(0)
 			await fetchImages()
