@@ -17,27 +17,6 @@ interface ImageBoxProps {
 	imageUrl: string
 }
 
-const ImageBox: FunctionComponent<ImageBoxProps> = (props) => {
-	const { imageUrl } = props
-
-	const imageStyle = {
-		backgroundImage: `url(${imageUrl})`,
-		height: '13rem',
-		width: '13rem',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'center',
-		backgroundSize: 'contain',
-		border: '1px solid gray',
-		boxShadow: '3px 3px 10px rgb(0 0 0 / 50%)'
-	}
-	return (
-		<div className="image-box"
-			style={imageStyle}
-		>
-		</div>
-	)
-}
-
 const startSearching = async (keyword: string, limit: number, offset: number) => {
 	const searchUrl = `${Constants.BASE_URL}?\
 											api_key=${Constants.API_KEY}\
