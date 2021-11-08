@@ -70,7 +70,10 @@ const Search: FunctionComponent<SearchProps> = (props) => {
 			<button
 				style={imageUrls.length ? {} : {display: 'none'}}
 				onClick={handleFetchMore}
-			>Fetch more!</button>
+				className='fetch-more'
+			>
+				Fetch more!
+			</button>
 		</div>
 	);
 }
@@ -86,10 +89,23 @@ export default styled(Search)`
     margin-top: 1rem;
 	}
 	
-	
 	.images-container {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
+	}
+
+	.fetch-more {
+		outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: #e98392;
+	}
+	.fetch-more:hover {
+		transform: scale(1.1);
 	}
 `

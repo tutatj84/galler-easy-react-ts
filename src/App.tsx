@@ -53,5 +53,8 @@ const Layout = () => {
 export default styled(App)`
   .outlet {
     text-align: center;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 1rem;
   }
 `
