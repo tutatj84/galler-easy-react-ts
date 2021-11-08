@@ -4,7 +4,7 @@ import { FunctionComponent, useContext } from 'react'
 import { Link, useMatch, useResolvedPath } from 'react-router-dom'
 import type { LinkProps } from 'react-router-dom'
 import styled from 'styled-components'
-import FavPicsContext from '../Context'
+import FavPicsContext from '../FavPicsContext'
 
 interface HeaderProps {
   className?: string

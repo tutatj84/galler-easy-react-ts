@@ -1,11 +1,11 @@
 // react
-import React, { FunctionComponent, useMemo, useState } from 'react'
+import { FunctionComponent, useMemo, useState } from 'react'
 // lib
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from './components/Header'
 // context
-import FavPicsContext from './Context'
+import FavPicsContext from './FavPicsContext'
 // components
 import Favourite from './screens/Favourite'
 import NotFound from './screens/NotFound'

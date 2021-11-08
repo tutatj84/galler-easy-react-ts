@@ -2,7 +2,7 @@
 import { FunctionComponent, useContext, useEffect, useRef, useState } from "react"
 //lib
 import styled from 'styled-components'
-import FavPicsContext from "../Context"
+import FavPicsContext from "../FavPicsContext"
 
 interface ImagesContainerProps {
 	className?: string,

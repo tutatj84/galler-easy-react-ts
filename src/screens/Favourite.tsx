@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext, useEffect } from "react";
 import ImagesContainer from "../components/ImagesContainer";
 // context
-import FavPicsContext from '../Context'
+import FavPicsContext from '../FavPicsContext'
 
 interface FavouriteProps {
 
