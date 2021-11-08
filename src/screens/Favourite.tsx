@@ -1,4 +1,4 @@
-import { FunctionComponent, useContext, useEffect } from "react";
+import { FunctionComponent, useContext } from "react";
 import ImagesContainer from "../components/ImagesContainer";
 // context
 import FavPicsContext from '../FavPicsContext'
@@ -9,15 +9,7 @@ interface FavouriteProps {
 
 const Favourite: FunctionComponent<FavouriteProps> = () => {
 
-	const { favImages, setFavImages } = useContext(FavPicsContext)
-
-	const getAllImageUrlFromStorage = () => {
-		return Object.keys(localStorage)
-	}
-
-	useEffect(() => {
-		setFavImages(getAllImageUrlFromStorage)
-	}, [])
+	const { favImages } = useContext(FavPicsContext)
 
 	return (
 		<div className="fav">

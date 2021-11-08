@@ -1,5 +1,5 @@
 // react
-import { FunctionComponent, useMemo, useState } from 'react'
+import { FunctionComponent, useEffect, useMemo, useState } from 'react'
 // lib
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
@@ -21,6 +21,15 @@ const App: FunctionComponent<AppProps> = ({ className }) => {
     () => ({ favImages, setFavImages }),
     [favImages]
   );
+
+  const getAllImageUrlFromStorage = () => {
+		return Object.keys(localStorage)
+	}
+
+	useEffect(() => {
+		setFavImages(getAllImageUrlFromStorage)
+	}, [])
+
 
   return (
     <div className={className}>
