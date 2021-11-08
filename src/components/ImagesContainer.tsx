@@ -1,7 +1,8 @@
 // react
-import { FunctionComponent, useEffect, useRef, useState } from "react"
+import { FunctionComponent, useContext, useEffect, useRef, useState } from "react"
 //lib
 import styled from 'styled-components'
+import FavPicsContext from "../Context"
 
 interface ImagesContainerProps {
 	className?: string,
@@ -16,19 +17,26 @@ const checkIsFav = (imageUrl: string) => {
 	return isFav
 }
 
+const getAllImageUrlFromStorage = () => {
+	return Object.keys(localStorage)
+}
+
 const ImageBox: FunctionComponent<ImageBoxProps> = (props) => {
 	const { imageUrl } = props
 
 	const [isFav, setIsFav] = useState(false)
 	const isFavRef = useRef<boolean>()
+	const { setFavImages } = useContext(FavPicsContext)
 
 	const toggleFavStatus = (key: string) => {
 		isFavRef.current = !isFav
 		setIsFav(isFav => !isFav)
 		if (isFavRef.current) {
 			window.localStorage.setItem(imageUrl, imageUrl)
+			setFavImages(getAllImageUrlFromStorage)
 		} else {
 			window.localStorage.removeItem(imageUrl)
+			setFavImages(getAllImageUrlFromStorage)
 		}
 	}
 
