@@ -4,23 +4,16 @@ import React, { useMemo, useState } from 'react'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from './components/Header'
+// context
+import FavPicsContext from './Context'
 // components
 import Favourite from './screens/Favourite'
 import NotFound from './screens/NotFound'
 import Search from './screens/Search'
 
-type FavContext = {
-  favImages: string[], 
-  setFavImages: React.Dispatch<React.SetStateAction<string[]>>
-}
-
-const FavPicsContext = React.createContext<FavContext>({
-  favImages: [], 
-  setFavImages: () => {}
-})
 
 const App = () => {
-  const [favImages, setFavImages] = useState<string[]>([''])
+  const [favImages, setFavImages] = useState<string[]>([])
   const value = useMemo(
     () => ({ favImages, setFavImages }), 
     [favImages]
