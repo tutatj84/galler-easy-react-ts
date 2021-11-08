@@ -83,6 +83,8 @@ export default styled(ImagesContainer)`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
+	padding: 2rem;
+
 
 	.image-box {
 		height: 13rem;

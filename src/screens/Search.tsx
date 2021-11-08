@@ -76,8 +76,17 @@ const Search: FunctionComponent<SearchProps> = (props) => {
 }
 
 export default styled(Search)`
-	padding: 2rem;
-
+	form input {
+		width: 65%;
+    height: 2rem;
+		border: 0;
+    border-bottom: 2px solid gray;
+    outline: none;
+    font-size: 19px;
+    margin-top: 1rem;
+	}
+	
+	
 	.images-container {
 		display: flex;
 		flex-wrap: wrap;

@@ -1,5 +1,5 @@
 // react
-import React, { useMemo, useState } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 // lib
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
@@ -11,16 +11,19 @@ import Favourite from './screens/Favourite'
 import NotFound from './screens/NotFound'
 import Search from './screens/Search'
 
+interface AppProps {
+  className?: string
+}
 
-const App = () => {
+const App: FunctionComponent<AppProps> = ({ className }) => {
   const [favImages, setFavImages] = useState<string[]>([])
   const value = useMemo(
-    () => ({ favImages, setFavImages }), 
+    () => ({ favImages, setFavImages }),
     [favImages]
   );
 
   return (
-    <div className="App">
+    <div className={className}>
       <FavPicsContext.Provider value={value}>
         <BrowserRouter>
           <Routes>
@@ -40,11 +43,15 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="outlet">
+        <Outlet />
+      </div>
     </>
   )
 }
 
 export default styled(App)`
-  
+  .outlet {
+    text-align: center;
+  }
 `
