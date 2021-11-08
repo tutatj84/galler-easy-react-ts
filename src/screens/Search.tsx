@@ -67,7 +67,10 @@ const Search: FunctionComponent<SearchProps> = (props) => {
 					onChange={(e) => setTxtSearch(e.target.value)} />
 			</form>
 			<ImagesContainer imageUrls={imageUrls} />
-			<button onClick={handleFetchMore}>Fetch more!</button>
+			<button
+				style={imageUrls.length ? {} : {display: 'none'}}
+				onClick={handleFetchMore}
+			>Fetch more!</button>
 		</div>
 	);
 }

@@ -61,6 +61,10 @@ const ImageBox: FunctionComponent<ImageBoxProps> = (props) => {
 const ImagesContainer: FunctionComponent<ImagesContainerProps> = (props) => {
 	const { className, imageUrls } = props
 
+	const noImageNoti = <p>
+		<h1>No Image Here 💔</h1>
+	</p>
+
 	const imageResults = imageUrls.map((imageUrl) =>
 		<ImageBox
 			key={imageUrl}
@@ -70,7 +74,7 @@ const ImagesContainer: FunctionComponent<ImagesContainerProps> = (props) => {
 
 	return (
 		<div className={className}>
-			{imageResults}
+			{ imageUrls.length ? imageResults : noImageNoti}
 		</div>
 	)
 }
