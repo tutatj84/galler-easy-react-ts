@@ -1,4 +1,4 @@
-export const API_KEY = 'insert your API key here!'
+export const API_KEY = 'z31m8N62JgVyGStEtffan1H4yd9eZ30L'
 export const BASE_URL = 'http://api.giphy.com/v1/gifs/search'
 export const SEARCH_IMAGES_LENGTH = 8
 
