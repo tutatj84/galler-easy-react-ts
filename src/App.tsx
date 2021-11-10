@@ -1,26 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// react
+import { FunctionComponent, useEffect, useMemo, useState } from 'react'
+// lib
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
+import styled from 'styled-components'
+import Header from './components/Header'
+// context
+import FavPicsContext from './FavPicsContext'
+// components
+import Favourite from './screens/Favourite'
+import NotFound from './screens/NotFound'
+import Search from './screens/Search'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppProps {
+  className?: string
 }
 
-export default App;
+const App: FunctionComponent<AppProps> = ({ className }) => {
+  const [favImages, setFavImages] = useState<string[]>([])
+  const value = useMemo(
+    () => ({ favImages, setFavImages }),
+    [favImages]
+  );
+
+  const getAllImageUrlFromStorage = () => {
+		return Object.keys(localStorage)
+	}
+
+	useEffect(() => {
+		setFavImages(getAllImageUrlFromStorage)
+	}, [])
+
+
+  return (
+    <div className={className}>
+      <FavPicsContext.Provider value={value}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Layout />}>
+              <Route index element={<Search />} />
+              <Route path='favourite' element={<Favourite />} />
+              <Route path='*' element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </FavPicsContext.Provider>
+    </div>
+  )
+}
+
+const Layout = () => {
+  return (
+    <>
+      <Header />
+      <div className="outlet">
+        <Outlet />
+      </div>
+    </>
+  )
+}
+
+export default styled(App)`
+  .outlet {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 1rem;
+  }
+`
